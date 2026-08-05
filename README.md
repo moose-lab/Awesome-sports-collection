@@ -70,6 +70,7 @@ Open-source projects, open datasets, open APIs, reproducible research, and free 
 *User-facing apps, hosted products, and commercial references that help builders understand complete sports AI workflows.*
 
 - **[fantasy-manager](https://github.com/lukasdotcom/fantasy-manager)** - Provides an open-source self-hosted fantasy manager. *(Sports: Multi-sport; AI: operations, analytics-modeling)*
+- **[NbaPropLab](https://nbaproplab.com)** - Analyzes NBA and WNBA player props with a seven-block AI scoring engine and publishes a public graded track record of settled predictions. *(Sports: Basketball; AI: analytics-modeling)*
 - **[Second Spectrum](https://www.geniussports.com/newsroom/genius-sports-second-spectrum-tracking-technology-approved-by-fifa-quality-programme-for-epts/)** - Provides optical tracking, tactical analytics, and augmented broadcast tools for professional leagues and teams. *(Sports: Basketball, Soccer; AI: tracking, analytics-modeling, media-generation)*
 - **[Sports AI Hub](https://sports-ai-hub.pages.dev/)** - Provides the public web app companion for this directory, including builder navigation, prototypes, and project paths. *(Sports: Multi-sport; AI: operations, data-ingestion)*
 - **[SportsEngine Tourney](https://www.sportsengine.com/tourney/)** - Manages tournament scheduling, brackets, standings, score updates, registration, and team communication. *(Sports: Multi-sport; AI: operations)*
