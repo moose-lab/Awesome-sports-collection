@@ -412,6 +412,20 @@
       "openness": "open-source"
     },
     {
+      "id": "nbaproplab",
+      "title": "NbaPropLab",
+      "url": "https://nbaproplab.com",
+      "description": "Analyzes NBA and WNBA player props with a seven-block AI scoring engine and publishes a public graded track record of settled predictions.",
+      "categoryId": "apps-products",
+      "sportTags": [
+        "Basketball"
+      ],
+      "aiCapabilities": [
+        "analytics-modeling"
+      ],
+      "openness": "commercial-reference"
+    },
+    {
       "id": "fastf1",
       "title": "FastF1",
       "url": "https://github.com/theOehrly/Fast-F1",
