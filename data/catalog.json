@@ -412,6 +412,16 @@
       "openness": "open-source"
     },
     {
+      "id": "posterior-mlb-predictions-ledger",
+      "title": "Posterior MLB Predictions Ledger",
+      "url": "https://posterior.pro/data/picks.csv",
+      "description": "Publishes a public CSV of graded MLB model predictions with pre-game filed prices and settled results, free to use with attribution.",
+      "categoryId": "datasets-apis-feeds",
+      "sportTags": ["Baseball/Softball"],
+      "aiCapabilities": ["data-ingestion", "analytics-modeling", "benchmarking"],
+      "openness": "open-data"
+    },
+    {
       "id": "fastf1",
       "title": "FastF1",
       "url": "https://github.com/theOehrly/Fast-F1",
