@@ -57,6 +57,8 @@ Useful catalog resources:
 - [SoccerNet](https://www.soccer-net.org/data) for soccer video understanding benchmarks.
 - [SportsMOT](https://deeperaction.github.io/datasets/sportsmot.html) for multi-object tracking benchmark ideas across sports.
 - [OpenCV](https://github.com/opencv/opencv) for frame extraction, overlays, and video preprocessing.
+- [Roboflow Sports](https://github.com/roboflow/sports) for runnable player and ball tracking, team classification, and pitch-view projection workflows.
+  - [Watch the 43-second product explainer](../media/roboflow-sports-explainer/roboflow-sports-explainer-zh.mp4) with Mandarin narration and Chinese captions.
 - [ffmpeg-python](https://github.com/kkroening/ffmpeg-python) for clip generation and filtering.
 - [Video Tagging Events](https://github.com/napo/videotaggingevents) for sports video tagging workflows.
 - [FastF1](https://github.com/theOehrly/Fast-F1) *(Cross-domain)* for treating time windows and event timelines as inspectable session objects.

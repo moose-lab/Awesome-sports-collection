@@ -545,7 +545,7 @@
       "id": "roboflow-sports",
       "title": "Roboflow Sports",
       "url": "https://github.com/roboflow/sports",
-      "description": "Provides computer-vision examples, models, and workflows for sports detection, tracking, and analytics.",
+      "description": "Provides reusable sports computer-vision workflows for player and ball tracking, team classification, and pitch-view projection.",
       "categoryId": "ai-models-components",
       "sportTags": ["Multi-sport"],
       "aiCapabilities": ["computer-vision", "tracking"],
