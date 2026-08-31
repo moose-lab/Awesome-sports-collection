@@ -16,6 +16,7 @@ This repository follows the [Awesome List](https://github.com/sindresorhus/aweso
 - [The Builder's Path](#the-builders-path)
 - [HYROX Training Agent](#hyrox-training-agent)
 - [CrossFit Training Agent](#crossfit-training-agent)
+- [Marathon Training Agent](#marathon-training-agent)
 - [Data, APIs, and Feeds](#data-apis-and-feeds)
 - [Analytics and Visualization](#analytics-and-visualization)
 - [Training and Performance](#training-and-performance)
@@ -170,6 +171,40 @@ Asset registry summary:
 node scripts/crossfit-day-plan.mjs --list-assets
 ```
 
+## Marathon Training Agent
+
+The marathon workstream turns professional running evidence into a configurable 8–30 week AI-coach skill for beginner through competitive amateur runners. It generates a complete phase plan, detailed daily and weekly prescriptions, readiness-based adaptations, a non-guaranteed pacing/fuelling strategy, portable `.ics`, and an explicit macOS Calendar write path.
+
+- [Marathon professional training assets](docs/marathon-professional-training-assets.md) - Governing-body guidance, systematic reviews, primary studies, practice evidence, limitations, and evidence-to-program decisions. _Sports: Running/Track._
+- [Marathon coach specification](docs/marathon-coach-spec.md) - Product contract, inputs, safety boundaries, commands, tests, and success criteria. _Sports: Running/Track._
+- [Marathon coach architecture](docs/marathon-coach-architecture.md) - Profile, pace, plan, readiness, rendering, and preview-first calendar data flow. _Sports: Running/Track._
+- [`skills/marathon-coach/SKILL.md`](skills/marathon-coach/SKILL.md) - Agent workflow for intake, multi-week planning, daily adaptation, race execution, and calendar actions. _Sports: Running/Track._
+- [`marathon-plan`](scripts/marathon-plan.mjs) - Local CLI for Markdown/JSON training plans, detailed selected weeks, `.ics` previews, and explicit macOS Calendar installation. _Sports: Running/Track._
+
+Generate a detailed selected week:
+
+```bash
+node scripts/marathon-plan.mjs --level advanced --start-date 2026-09-07 --weeks 16 --current-weekly-km 55 --longest-run-km 24 --recent-race half --recent-time 1:36:00 --goal-time 3:20:00 --week 6
+```
+
+Apply a readiness adjustment:
+
+```bash
+node scripts/marathon-plan.mjs --start-date 2026-09-07 --weeks 16 --week 6 --sleep-hours 5.5 --soreness 7 --pain 2 --prior-completion 70
+```
+
+Preview a calendar week:
+
+```bash
+node scripts/marathon-plan.mjs --start-date 2026-09-07 --weeks 16 --week 6 --format ics --output /tmp/marathon-week-6.ics
+```
+
+Inspect the evidence registry:
+
+```bash
+node scripts/marathon-plan.mjs --list-assets
+```
+
 ## Data, APIs, and Feeds
 
 Tools and services for sports schedules, scores, fixtures, rosters, odds, play-by-play data, stats, and live feeds.
@@ -207,6 +242,8 @@ Tools for coaching, athlete development, strength and conditioning, recovery, we
 - [CrossFit Daily Plan CLI](scripts/crossfit-day-plan.mjs) - Renders level-aware class-style CrossFit sessions with intended stimulus and scaling paths. _Sports: Multi-sport._
 - [HYROX Training Agent assets](docs/hyrox-professional-training-assets.md) - Curates official HYROX rules, training partners, science, videos, blogs, and podcasts for AI-agent training plans. _Sports: Multi-sport, Running/Track._
 - [HYROX Daily Plan CLI](scripts/hyrox-day-plan.mjs) - Renders level-aware daily HYROX sessions from structured program data. _Sports: Multi-sport, Running/Track._
+- [Marathon Coach Skill](skills/marathon-coach/SKILL.md) - Generates source-backed multi-week marathon plans, readiness adaptations, race strategy, and calendar-ready weeks. _Sports: Running/Track._
+- [Marathon Plan CLI](scripts/marathon-plan.mjs) - Renders configurable marathon plans and exports selected weeks to JSON or RFC 5545 calendar events. _Sports: Running/Track._
 - [MMPose](https://github.com/open-mmlab/mmpose) - Provides an open-source pose estimation toolbox for biomechanics and movement analysis. _Sports: Multi-sport._
 - [OpenPose](https://github.com/CMU-Perceptual-Computing-Lab/openpose) - Detects real-time multi-person body, hand, face, and foot keypoints. _Sports: Multi-sport._
 

@@ -166,3 +166,20 @@ test("rejects unsupported plan weeks and formats", () => {
     /Unknown format/i
   );
 });
+
+test("documents and exposes the marathon coach as an agent skill", () => {
+  const read = (path) => readFileSync(join(root, path), "utf8");
+  const skill = read("skills/marathon-coach/SKILL.md");
+  const readme = read("README.md");
+  const evidence = read("docs/marathon-professional-training-assets.md");
+  const architecture = read("docs/marathon-coach-architecture.md");
+
+  assert.match(skill, /^---\nname: marathon-coach\ndescription:/);
+  assert.match(skill, /preview.*Calendar/i);
+  assert.match(skill, /readiness/i);
+  assert.match(readme, /Marathon Training Agent/);
+  assert.match(readme, /scripts\/marathon-plan\.mjs/);
+  assert.match(evidence, /World Athletics/);
+  assert.match(evidence, /RFC 5545/);
+  assert.match(architecture, /preview-first/i);
+});
