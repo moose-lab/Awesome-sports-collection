@@ -1,0 +1,130 @@
+{
+  "meta": {
+    "title": "Source-backed marathon training program rules",
+    "version": "0.1.0",
+    "last_verified": "2026-08-31",
+    "design_goal": "Create individualized, progressive marathon preparation without disguising population evidence or operational defaults as guarantees.",
+    "heuristic_policy": "The 5% default weekly build and level volume bands are conservative operational defaults, not proven biological thresholds. They must be anchored to the athlete's recent completed training and reduced when readiness deteriorates."
+  },
+  "plan_limits": {
+    "weeks": { "min": 8, "max": 30 },
+    "run_days": { "min": 3, "max": 7 },
+    "default_progression_rate": 0.05,
+    "cutback_every_weeks": 4,
+    "cutback_factor": 0.85,
+    "single_session_spike_limit": 0.1
+  },
+  "phases": {
+    "foundation": {
+      "label_en": "Foundation",
+      "label_zh": "基础期",
+      "purpose": "Establish consistent easy volume, tissue tolerance, technique, and strength before adding dense quality work.",
+      "source_ids": ["training-intensity-network-meta-2025", "running-injury-parameters-review-2022"]
+    },
+    "build": {
+      "label_en": "Build",
+      "label_zh": "能力建设期",
+      "purpose": "Develop threshold, aerobic power, running economy, and long-run durability with controlled progression.",
+      "source_ids": ["marathon-training-determinants-meta-2020", "strength-running-economy-meta-2024"]
+    },
+    "specific": {
+      "label_en": "Marathon specific",
+      "label_zh": "马拉松专项期",
+      "purpose": "Rehearse marathon-effort blocks, long-run fuelling, race equipment, and even-effort pacing without turning every long run into a race.",
+      "source_ids": ["marathon-pacing-review-2024", "world-athletics-distance-nutrition-2019"]
+    },
+    "taper": {
+      "label_en": "Taper and race",
+      "label_zh": "减量与比赛期",
+      "purpose": "Reduce accumulated fatigue while retaining short intensity exposures, race rhythm, and normal training frequency where tolerated.",
+      "source_ids": ["taper-meta-2007"]
+    }
+  },
+  "intensity_anchors": {
+    "recovery": {
+      "rpe": "1-2/10",
+      "talk_test": "Unrestricted conversation; breathing feels easier than normal easy running."
+    },
+    "easy": {
+      "rpe": "2-3/10",
+      "talk_test": "Full sentences; finish with clear reserve."
+    },
+    "steady": {
+      "rpe": "4-5/10",
+      "talk_test": "Short sentences; controlled and never straining."
+    },
+    "marathon": {
+      "rpe": "5-6/10",
+      "talk_test": "Short phrases; rhythm is controlled and sustainable."
+    },
+    "threshold": {
+      "rpe": "7/10",
+      "talk_test": "A few words at a time; repeatable, not a time trial."
+    },
+    "interval": {
+      "rpe": "8-9/10",
+      "talk_test": "Single words during work; form and repeatability set the limit."
+    }
+  },
+  "readiness": {
+    "green": {
+      "action": "Complete the plan as written.",
+      "volume_factor": 1,
+      "intensity_allowed": true
+    },
+    "yellow": {
+      "action": "Reduce total work by 20-30%, remove fast finish work, or replace intervals with easy running.",
+      "volume_factor": 0.75,
+      "intensity_allowed": false
+    },
+    "red": {
+      "action": "Stop planned running; use rest or gentle mobility and seek qualified help when symptoms warrant it.",
+      "volume_factor": 0,
+      "intensity_allowed": false,
+      "stop_training": true
+    }
+  },
+  "safety": {
+    "red_flags": [
+      "chest pain",
+      "fainting",
+      "severe or unusual shortness of breath",
+      "neurological symptoms",
+      "acute swelling or suspected fracture",
+      "fever or systemic illness",
+      "pain that changes gait"
+    ],
+    "professional_supervision": [
+      "known cardiovascular, metabolic, or renal disease",
+      "pregnancy or postpartum return",
+      "return after major injury or surgery",
+      "recurrent bone stress injury",
+      "persistent low-energy-availability or eating-disorder concerns",
+      "athletes under 18"
+    ]
+  },
+  "race_nutrition": {
+    "carbohydrate_g_per_hour": {
+      "under_150_minutes": [45, 75],
+      "150_minutes_or_more": [60, 90]
+    },
+    "rules": [
+      "Start fuelling early and use only products and doses rehearsed in long runs.",
+      "Build toward the target range progressively; gastrointestinal tolerance overrides the theoretical maximum.",
+      "Hydration is individualized to thirst, weather, sweat rate, body size, and aid-station access; do not drink beyond losses.",
+      "Sodium does not prevent hyponatremia when fluid intake is excessive."
+    ],
+    "source_ids": ["world-athletics-distance-nutrition-2019", "eah-consensus-2015", "ioc-reds-2023"]
+  },
+  "race_pacing": {
+    "default_strategy": "Even effort with low pace variability. Do not bank time in the opening kilometres.",
+    "course_adjustment": "Let pace change for hills, wind, heat, and congestion while keeping effort and fuelling controlled.",
+    "source_ids": ["marathon-pacing-review-2024", "marathon-pacing-large-scale-2026", "marathon-pacing-experience-2020"]
+  },
+  "calendar": {
+    "default_start_time": "06:30",
+    "rest_start_time": "20:30",
+    "product_id": "-//Awesome Sports AI//Marathon Coach//EN",
+    "source_id": "rfc5545-icalendar"
+  }
+}

@@ -1,0 +1,278 @@
+{
+  "meta": {
+    "title": "Marathon coach professional asset registry",
+    "version": "0.1.0",
+    "last_verified": "2026-08-31",
+    "scope": "Primary and high-level secondary sources that constrain marathon plan generation, adaptation, race pacing, fuelling, hydration, recovery, safety, and calendar export.",
+    "evidence_policy": "Prefer governing-body consensus, systematic reviews/meta-analyses, and peer-reviewed primary studies. Observational associations and practice audits may guide conservative defaults but must not be presented as causal rules."
+  },
+  "categories": {
+    "governing_body_and_consensus": [
+      {
+        "id": "world-athletics-nutrition-2019",
+        "title": "International Association of Athletics Federations Consensus Statement 2019: Nutrition for Athletics",
+        "url": "https://worldathletics.org/download/download?filename=23fb9de0-6699-4d5b-b075-42f5da5518f5.pdf&urlslug=Nutrition+for+Athletics+-+2019+IAAF+Consensus+Statement",
+        "year": 2019,
+        "evidence_type": "governing-body consensus statement",
+        "topics": ["nutrition", "recovery", "health", "periodization"],
+        "decision_use": [
+          "Periodize and individualize nutrition to training and competition demands.",
+          "Escalate persistent low-energy-availability concerns to qualified sports nutrition and medical professionals."
+        ],
+        "limitations": ["Consensus principles require individual translation; they are not a fixed meal plan."],
+        "last_verified": "2026-08-31"
+      },
+      {
+        "id": "world-athletics-distance-nutrition-2019",
+        "title": "Contemporary Nutrition Strategies to Optimize Performance in Distance Runners and Race Walkers",
+        "url": "https://worldathletics.org/download/download?filename=6babe10a-9969-407e-b0cd-f7d96df50f51.pdf&urlslug=Contemporary%2BNutrition%2BStrategies%2Bto%2BOptimize%2BPerformance%2Bin%2BDistance%2BRunners%2Band%2BRace%2BWalkers",
+        "year": 2019,
+        "evidence_type": "governing-body commissioned review",
+        "topics": ["marathon", "carbohydrate", "hydration", "gut training"],
+        "decision_use": [
+          "Rehearse race carbohydrate and fluid strategies during long runs.",
+          "For the longest races, high carbohydrate delivery may reach 75-90 g/hour when practiced and tolerated."
+        ],
+        "limitations": ["The upper intake range is not an automatic starting target and may cause gastrointestinal distress without progressive gut training."],
+        "last_verified": "2026-08-31"
+      },
+      {
+        "id": "ioc-reds-2023",
+        "title": "2023 International Olympic Committee consensus statement on Relative Energy Deficiency in Sport",
+        "url": "https://bjsm.bmj.com/content/57/17/1073",
+        "year": 2023,
+        "evidence_type": "IOC consensus statement",
+        "topics": ["low energy availability", "bone health", "performance", "female athletes", "male athletes"],
+        "decision_use": [
+          "Do not pair escalating marathon load with chronic under-fuelling or aggressive weight loss.",
+          "Flag persistent fatigue, recurrent bone injury, menstrual disruption, low libido, or deteriorating performance for professional review."
+        ],
+        "limitations": ["REDs is a clinical, multifactorial diagnosis; the skill can screen for concerns but cannot diagnose it."],
+        "last_verified": "2026-08-31"
+      },
+      {
+        "id": "acsm-screening-2015",
+        "title": "Updating ACSM's Recommendations for Exercise Preparticipation Health Screening",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/26473759/",
+        "year": 2015,
+        "evidence_type": "ACSM scientific roundtable recommendations",
+        "topics": ["screening", "cardiovascular safety", "exercise intensity"],
+        "decision_use": [
+          "Screen current activity, known cardiovascular/metabolic/renal disease, warning symptoms, and desired intensity before hard training."
+        ],
+        "limitations": ["Screening determines whether medical clearance is prudent; it does not establish marathon readiness."],
+        "last_verified": "2026-08-31"
+      },
+      {
+        "id": "eah-consensus-2015",
+        "title": "Statement of the Third International Exercise-Associated Hyponatremia Consensus Development Conference",
+        "url": "https://bjsm.bmj.com/content/49/22/1432",
+        "year": 2015,
+        "evidence_type": "international consensus statement",
+        "topics": ["hydration", "hyponatremia", "race safety"],
+        "decision_use": [
+          "Warn against fluid intake in excess of losses and use thirst as the default safety guide.",
+          "Treat sodium as individualized support, not protection against overdrinking."
+        ],
+        "limitations": ["Environmental conditions, sweat rate, body size, medications, and race duration change individual needs."],
+        "last_verified": "2026-08-31"
+      },
+      {
+        "id": "athlete-sleep-consensus-2021",
+        "title": "Sleep and the athlete: narrative review and 2021 expert consensus recommendations",
+        "url": "https://bjsm.bmj.com/content/55/7/356",
+        "year": 2021,
+        "evidence_type": "expert consensus and narrative review",
+        "topics": ["sleep", "recovery", "readiness"],
+        "decision_use": [
+          "Use individualized sleep need and recent sleep disruption as readiness context rather than one universal target.",
+          "Reduce training stress when sleep inadequacy coexists with other fatigue or illness signals."
+        ],
+        "limitations": ["The paper notes that much athlete sleep evidence is low quality and a universal 7-9 hour rule is not ideal."],
+        "last_verified": "2026-08-31"
+      },
+      {
+        "id": "recovery-consensus-2018",
+        "title": "Recovery and Performance in Sport: Consensus Statement",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/29345524/",
+        "year": 2018,
+        "evidence_type": "expert consensus statement",
+        "topics": ["recovery", "monitoring", "fatigue", "training load"],
+        "decision_use": [
+          "Monitor recovery with multiple subjective and objective signals and adjust training for individual response."
+        ],
+        "limitations": ["No single readiness metric reliably captures recovery or injury risk."],
+        "last_verified": "2026-08-31"
+      }
+    ],
+    "systematic_reviews_and_meta_analyses": [
+      {
+        "id": "training-intensity-network-meta-2025",
+        "title": "Which Training Intensity Distribution Intervention Will Produce the Greatest Improvements in Endurance Athletes?",
+        "url": "https://link.springer.com/article/10.1007/s40279-024-02149-3",
+        "year": 2025,
+        "evidence_type": "systematic review and individual-participant network meta-analysis",
+        "topics": ["training intensity distribution", "recreational", "competitive"],
+        "decision_use": [
+          "Keep most training low intensity and a smaller portion moderate/high, while adapting pyramidal versus polarized emphasis to level and response.",
+          "Do not claim one universal intensity distribution is superior for every runner."
+        ],
+        "limitations": ["Only 13 studies and 348 athletes were included; women were underrepresented and outcomes were VO2max/time trial rather than marathon performance."],
+        "last_verified": "2026-08-31"
+      },
+      {
+        "id": "strength-running-economy-meta-2024",
+        "title": "Effect of Strength Training Programs in Middle- and Long-Distance Runners' Economy at Different Running Speeds",
+        "url": "https://link.springer.com/article/10.1007/s40279-023-01978-y",
+        "year": 2024,
+        "evidence_type": "systematic review with meta-analysis",
+        "topics": ["strength", "running economy", "plyometrics"],
+        "decision_use": [
+          "Include progressive heavy, plyometric, or combined strength work when technically appropriate.",
+          "Reduce strength fatigue near key marathon-specific sessions and during taper."
+        ],
+        "limitations": ["Evidence certainty ranged from moderate to low; included programs and runner levels were heterogeneous."],
+        "last_verified": "2026-08-31"
+      },
+      {
+        "id": "taper-meta-2007",
+        "title": "Effects of Tapering on Performance: A Meta-Analysis",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/17762369/",
+        "year": 2007,
+        "evidence_type": "meta-analysis",
+        "topics": ["taper", "volume", "intensity", "performance"],
+        "decision_use": [
+          "Use a roughly two-week default taper with a substantial volume reduction while retaining short intensity and normal training rhythm where tolerated."
+        ],
+        "limitations": ["The analysis spans multiple sports and competitive athletes; individual marathon response and longer tapers can differ."],
+        "last_verified": "2026-08-31"
+      },
+      {
+        "id": "marathon-training-determinants-meta-2020",
+        "title": "An Evaluation of the Training Determinants of Marathon Performance",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31704026/",
+        "year": 2020,
+        "evidence_type": "systematic review, meta-analysis, and meta-regression",
+        "topics": ["weekly volume", "long run", "frequency", "marathon performance"],
+        "decision_use": [
+          "Treat sustained weekly volume, run frequency, long-run preparation, and training history as performance-relevant inputs."
+        ],
+        "limitations": ["Associations across heterogeneous cohorts do not prove that simply increasing every training parameter will improve an individual runner."],
+        "last_verified": "2026-08-31"
+      },
+      {
+        "id": "running-injury-parameters-review-2022",
+        "title": "The Association Between Running Injuries and Training Parameters: A Systematic Review",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/34478518/",
+        "year": 2022,
+        "evidence_type": "systematic review",
+        "topics": ["injury", "training volume", "training intensity", "progression"],
+        "decision_use": [
+          "Avoid presenting weekly distance, duration, frequency, intensity, or a single progression percentage as a proven injury-prevention rule.",
+          "Use multi-factor monitoring that includes pain, recovery, lifestyle, and training history."
+        ],
+        "limitations": ["The review found conflicting evidence and wide variation in injury definitions and study designs."],
+        "last_verified": "2026-08-31"
+      },
+      {
+        "id": "marathon-pacing-review-2024",
+        "title": "Pacing Strategies in Marathons: A Systematic Review",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/39281580/",
+        "year": 2024,
+        "evidence_type": "systematic review",
+        "topics": ["pacing", "race strategy", "marathon"],
+        "decision_use": [
+          "Build race plans around controlled, low-variability pacing and adapt for performance level, course, environment, age, and sex.",
+          "Do not treat the positive splits commonly observed in results as the desired strategy."
+        ],
+        "limitations": ["Most included studies were observational and optimal pacing depends on course and athlete context."],
+        "last_verified": "2026-08-31"
+      }
+    ],
+    "primary_and_practice_evidence": [
+      {
+        "id": "single-session-spike-2025",
+        "title": "How Much Running Is Too Much? Identifying High-Risk Running Sessions in a 5200-Person Cohort Study",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/40623829/",
+        "year": 2025,
+        "evidence_type": "prospective cohort study",
+        "topics": ["injury", "single-session distance", "long run", "load spike"],
+        "decision_use": [
+          "Flag a planned single run that exceeds the longest run in the prior 30 days by more than 10%.",
+          "Do not substitute weekly acute:chronic ratios for the single-session check."
+        ],
+        "limitations": ["Observational association based on self-reported overuse injury; it does not prove a universal causal threshold or cover every runner."],
+        "last_verified": "2026-08-31"
+      },
+      {
+        "id": "subelite-plan-audit-2024",
+        "title": "Quantitative Analysis of 92 12-Week Sub-Elite Marathon Training Plans",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/38695978/",
+        "year": 2024,
+        "evidence_type": "systematic quantitative practice audit",
+        "topics": ["training plans", "weekly volume", "intensity distribution"],
+        "decision_use": [
+          "Use low/middle/high plan-volume bands as practice context, never as a required target.",
+          "Prefer a pyramidal default for recreational runners unless their history supports a different distribution."
+        ],
+        "limitations": ["The authors explicitly note that the audit does not demonstrate the effectiveness of the plans reviewed."],
+        "last_verified": "2026-08-31"
+      },
+      {
+        "id": "marathon-pacing-large-scale-2026",
+        "title": "Pacing Strategy Patterns and Performance Outcomes in Marathon Running",
+        "url": "https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0352808",
+        "year": 2026,
+        "evidence_type": "large observational split-time analysis",
+        "topics": ["even pacing", "positive split", "hitting the wall", "recreational runners"],
+        "decision_use": [
+          "Use even effort/low pace variability as the default target and avoid an aggressive first half.",
+          "Explain that course topography and weather may require pace variation to preserve even effort."
+        ],
+        "limitations": ["Boston Marathon data are observational and course-specific; association with faster times does not establish causation."],
+        "last_verified": "2026-08-31"
+      },
+      {
+        "id": "marathon-pacing-experience-2020",
+        "title": "Marathon Pacing Ability: Training Characteristics and Previous Experience",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/31671022/",
+        "year": 2020,
+        "evidence_type": "observational study",
+        "topics": ["pacing", "experience", "weekly volume", "recent race results"],
+        "decision_use": [
+          "Use prior races, recent personal bests, and accumulated volume to qualify confidence in a goal pace."
+        ],
+        "limitations": ["Small questionnaire-based cohort and correlational design."],
+        "last_verified": "2026-08-31"
+      },
+      {
+        "id": "riegel-endurance-1981",
+        "title": "Athletic Records and Human Endurance",
+        "url": "https://pubmed.ncbi.nlm.nih.gov/7235349/",
+        "year": 1981,
+        "evidence_type": "performance modelling paper",
+        "topics": ["race prediction", "time-distance relationship"],
+        "decision_use": [
+          "Use the Riegel time-distance relationship only as a labelled planning estimate from a recent race result."
+        ],
+        "limitations": ["Population-level modelling cannot account for marathon-specific durability, course, weather, fuelling, or individual physiology."],
+        "last_verified": "2026-08-31"
+      }
+    ],
+    "technical_standards": [
+      {
+        "id": "rfc5545-icalendar",
+        "title": "RFC 5545: Internet Calendaring and Scheduling Core Object Specification",
+        "url": "https://www.rfc-editor.org/rfc/rfc5545",
+        "year": 2009,
+        "evidence_type": "IETF internet standard",
+        "topics": ["calendar", "VEVENT", "ICS"],
+        "decision_use": [
+          "Generate interoperable VEVENT records with escaped text, stable UIDs, DTSTART, DTEND, SUMMARY, and DESCRIPTION."
+        ],
+        "limitations": ["Calendar applications differ in timezone and import behavior; live installation remains platform-specific."],
+        "last_verified": "2026-08-31"
+      }
+    ]
+  }
+}

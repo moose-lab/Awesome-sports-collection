@@ -1,0 +1,100 @@
+{
+  "meta": {
+    "title": "Marathon coach athlete taxonomy",
+    "version": "0.1.0",
+    "last_verified": "2026-08-31"
+  },
+  "levels": {
+    "beginner": {
+      "label_en": "Beginner marathon pathway",
+      "label_zh": "马拉松入门路径",
+      "default_weeks": 20,
+      "default_run_days": 4,
+      "provisional_weekly_km": 25,
+      "peak_weekly_km_range": [35, 50],
+      "peak_long_run_km": 26,
+      "hard_sessions_per_week": 1,
+      "best_for": "First marathon runners with at least 8-12 weeks of consistent easy running.",
+      "entry_checks": [
+        "Runs at least three days per week",
+        "Has averaged at least 20 km per week for the last four weeks",
+        "Can complete 75 minutes of easy running or run-walk without pain"
+      ]
+    },
+    "intermediate": {
+      "label_en": "Intermediate recreational",
+      "label_zh": "大众进阶组",
+      "default_weeks": 16,
+      "default_run_days": 5,
+      "provisional_weekly_km": 40,
+      "peak_weekly_km_range": [45, 70],
+      "peak_long_run_km": 30,
+      "hard_sessions_per_week": 2,
+      "best_for": "Consistent recreational runners targeting a strong finish or personal best.",
+      "entry_checks": [
+        "Runs at least four days per week",
+        "Has averaged at least 30 km per week for the last six weeks",
+        "Has a recent 10 km or half-marathon result"
+      ]
+    },
+    "advanced": {
+      "label_en": "Advanced age-group",
+      "label_zh": "大众高水平组",
+      "default_weeks": 16,
+      "default_run_days": 6,
+      "provisional_weekly_km": 60,
+      "peak_weekly_km_range": [65, 95],
+      "peak_long_run_km": 32,
+      "hard_sessions_per_week": 2,
+      "best_for": "Experienced marathoners with durable volume and a performance goal.",
+      "entry_checks": [
+        "Runs at least five days per week",
+        "Has averaged at least 45 km per week for the last eight weeks",
+        "Has completed a half marathon or marathon preparation block"
+      ]
+    },
+    "competitive": {
+      "label_en": "Competitive amateur",
+      "label_zh": "业余竞争组",
+      "default_weeks": 20,
+      "default_run_days": 6,
+      "provisional_weekly_km": 80,
+      "peak_weekly_km_range": [85, 130],
+      "peak_long_run_km": 34,
+      "hard_sessions_per_week": 2,
+      "best_for": "High-level amateur runners with multi-year volume history and coach-level review.",
+      "entry_checks": [
+        "Runs five to seven days per week",
+        "Has averaged at least 65 km per week for the last eight weeks",
+        "Has recent race data and can recover from two quality sessions plus a long run"
+      ]
+    }
+  },
+  "recent_race_distances_km": {
+    "5k": 5,
+    "10k": 10,
+    "half": 21.0975,
+    "marathon": 42.195
+  },
+  "age_bands": [
+    {
+      "min_age": 18,
+      "max_age": 39,
+      "label": "adult",
+      "coaching": "Use normal progression when sleep, pain, and completion quality are stable."
+    },
+    {
+      "min_age": 40,
+      "max_age": 54,
+      "label": "masters",
+      "coaching": "Protect warm-up time and avoid stacking plyometrics or hard running when tendon response is poor."
+    },
+    {
+      "min_age": 55,
+      "max_age": 120,
+      "label": "masters-55-plus",
+      "coaching": "Protect two recovery touchpoints each week and prefer lower-impact substitutions when joints are irritated."
+    }
+  ],
+  "weekdays": ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"]
+}
