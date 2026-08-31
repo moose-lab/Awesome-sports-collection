@@ -130,7 +130,11 @@ function buildRoles(profile, phaseKey, weekDates, raceDate) {
     roles[longIndex] = "long";
   }
 
-  const runCandidates = availableIndexes.filter((index) => index !== longIndex && index !== raceIndex);
+  const runCandidates = availableIndexes.filter((index) =>
+    index !== longIndex
+    && index !== raceIndex
+    && (raceIndex < 0 || index < raceIndex)
+  );
   const primary = chooseCandidate(runCandidates, raceIndex >= 0 ? raceIndex : longIndex, 5);
   if (primary !== undefined) roles[primary] = phaseKey === "foundation" ? "strides" : "quality_primary";
 
@@ -192,6 +196,19 @@ function strengthPrescription(levelKey) {
   return [
     "30-40 min runner strength: heavy squat or trap-bar pattern, single-leg work, calf/soleus work and low-volume plyometrics; stop before grinding reps. / 30-40 分钟跑者力量：较重深蹲或六角杠模式、单腿训练、小腿与比目鱼肌训练及低量弹跳；不要做到力竭。"
   ];
+}
+
+function recoveryAndFuelling(role) {
+  if (role === "race") {
+    return "Use only rehearsed carbohydrate, fluid, equipment, and caffeine choices; drink to thirst and follow event medical guidance. / 只使用已经演练过的碳水、补水、装备与咖啡因方案；按口渴补水并遵从赛事医疗指引。";
+  }
+  if (role === "long") {
+    return "Recover with normal meals, carbohydrate, protein, fluid to thirst, and sleep; rehearse race fuel if the run exceeds 90 minutes. / 用正常饮食、碳水、蛋白质、按口渴补水和睡眠恢复；超过 90 分钟时演练比赛补给。";
+  }
+  if (role === "rest") {
+    return "Prioritize sleep and sufficient energy availability; gentle mobility is optional only if it leaves you fresher. / 优先保证睡眠与充足能量供给；轻柔活动度仅在做完更清爽时可选。";
+  }
+  return "Resume normal meals and hydration; protect the next easy/recovery window and do not add hidden intensity. / 正常进食与补水；保护下一次轻松或恢复窗口，不额外叠加强度。";
 }
 
 function roleContent(role, phaseKey, distanceKm, weekNumber, profile) {
@@ -411,7 +428,8 @@ export function buildMarathonPlan(profile) {
         distance_km: role === "race" ? 42.195 : distances[dayIndex],
         counts_toward_training_volume: role !== "race",
         strength: [],
-        ...content
+        ...content,
+        recovery_and_fuelling: recoveryAndFuelling(role)
       };
     });
     attachStrength(sessions, phaseKey, profile);

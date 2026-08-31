@@ -187,3 +187,19 @@ test("adapts the selected week without rewriting the source plan", () => {
   assert.equal(redRaceWeek.weekly_training_km, 0);
   assert.ok(redRaceWeek.sessions.every((session) => session.type === "rest"));
 });
+
+test("does not prescribe running after a midweek marathon", () => {
+  const profile = resolveRunnerProfile({
+    level: "intermediate",
+    weeks: 16,
+    startDate: "2026-09-07",
+    raceDate: "2026-12-23",
+    currentWeeklyKm: 40,
+    longestRunKm: 18,
+    runDays: 5
+  });
+  const raceWeek = buildMarathonPlan(profile).weeks.at(-1);
+  const raceIndex = raceWeek.sessions.findIndex((session) => session.type === "race");
+  assert.ok(raceIndex >= 0);
+  assert.ok(raceWeek.sessions.slice(raceIndex + 1).every((session) => session.type === "rest"));
+});
