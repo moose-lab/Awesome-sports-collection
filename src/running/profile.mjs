@@ -143,14 +143,24 @@ export function resolveRunnerProfile(input = {}) {
 
   const currentWeeklyKm = currentWeeklyInput ?? level.provisional_weekly_km;
   if (currentWeeklyInput === undefined) assumptions.push(`current weekly distance defaults to a provisional ${currentWeeklyKm} km`);
-  const longestRunInput = numberValue(pick(input, "longestRunKm", "longest_run_km"), "longest run km", { min: 0, max: 80 });
+  const minimumWeeklyKm = runDays * 3 + 3;
+  if (currentWeeklyKm < minimumWeeklyKm) {
+    throw new Error(`current weekly km must be at least ${minimumWeeklyKm} km for ${runDays} running days; reduce frequency or complete a base-building block first`);
+  }
+  const longestRunInput = numberValue(pick(input, "longestRunKm", "longest_run_km"), "longest run km", { min: 5, max: 80 });
   const longestRunKm = longestRunInput ?? provisionalLongestRunKm[preliminaryLevel];
   if (longestRunInput === undefined) assumptions.push(`longest run defaults to a provisional ${longestRunKm} km`);
+  if (longestRunKm > currentWeeklyKm) {
+    throw new Error("longest run km cannot exceed current weekly km");
+  }
 
   const peakWeeklyInput = numberValue(pick(input, "peakWeeklyKm", "peak_weekly_km"), "peak weekly km", { min: 0, max: 300 });
   const [levelPeakMin, levelPeakMax] = level.peak_weekly_km_range;
   const derivedPeak = currentWeeklyKm * (1 + Math.min(0.45, weeks * 0.025));
   const peakWeeklyKm = peakWeeklyInput ?? Math.max(currentWeeklyKm, Math.min(levelPeakMax, Math.max(levelPeakMin, derivedPeak)));
+  if (peakWeeklyKm < minimumWeeklyKm) {
+    throw new Error(`peak weekly km must be at least ${minimumWeeklyKm} km for ${runDays} running days`);
+  }
   if (peakWeeklyKm < currentWeeklyKm) warnings.push("peak weekly distance is below current training; treat this as a consolidation or return-to-running plan");
 
   const age = numberValue(pick(input, "age"), "age", { min: 0, max: 120, integer: true });

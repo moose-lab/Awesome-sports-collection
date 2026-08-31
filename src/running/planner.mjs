@@ -366,8 +366,10 @@ function attachStrength(sessions, phaseKey, profile) {
   const targetCount = phaseKey === "taper" ? 0 : phaseKey === "specific" ? 1 : 2;
   const candidates = sessions.filter((session) => ["easy_run", "recovery_run"].includes(session.type));
   candidates.slice(0, targetCount).forEach((session) => {
+    const strengthDurationMinutes = profile.level_key === "beginner" ? 25 : 35;
     session.strength = strengthPrescription(profile.level_key);
-    session.duration_minutes += profile.level_key === "beginner" ? 25 : 35;
+    session.strength_duration_minutes = strengthDurationMinutes;
+    session.duration_minutes += strengthDurationMinutes;
     session.source_ids = [...new Set([...session.source_ids, "strength-running-economy-meta-2024"])];
   });
 }
@@ -428,6 +430,7 @@ export function buildMarathonPlan(profile) {
         distance_km: role === "race" ? 42.195 : distances[dayIndex],
         counts_toward_training_volume: role !== "race",
         strength: [],
+        strength_duration_minutes: 0,
         ...content,
         recovery_and_fuelling: recoveryAndFuelling(role)
       };
@@ -484,25 +487,41 @@ export function adaptWeekForReadiness(week, readiness) {
       session.type = "rest";
       session.load_class = "rest";
       session.distance_km = 0;
+      session.duration_minutes = 20;
       session.title = "Readiness stop: rest and seek help if needed / 状态红灯：休息并按需寻求专业帮助";
+      session.training_goal = program.readiness.red.action;
+      session.warmup = [];
       session.main = [program.readiness.red.action];
+      session.cooldown = [];
+      session.completion_standard = "Do not resume running until the warning condition has resolved or qualified guidance permits it. / 警示情况未解决或尚未获得专业许可前，不恢复跑步。";
+      session.recovery_and_fuelling = "Prioritize rest and normal nourishment; seek qualified help when symptoms warrant it. / 优先休息与正常进食；症状需要时寻求专业帮助。";
       session.strength = [];
+      session.strength_duration_minutes = 0;
+      session.source_ids = [...new Set([...session.source_ids, "acsm-screening-2015", "recovery-consensus-2018"])];
       continue;
     }
     if (session.type === "race") continue;
+    const runningDuration = Math.max(15, session.duration_minutes - (session.strength_duration_minutes ?? 0));
     session.distance_km = roundHalf(session.distance_km * readiness.volume_factor);
+    session.duration_minutes = Math.max(20, Math.round(runningDuration * readiness.volume_factor));
     if (session.load_class === "hard") {
       session.original_type = session.type;
       session.type = "easy_run";
-      session.load_class = "easy";
       session.title = "Readiness-adjusted easy run / 状态调整轻松跑";
-      session.intensity = `${program.intensity_anchors.easy.rpe} · ${program.intensity_anchors.easy.talk_test}`;
-      session.main = [`${session.distance_km} km easy; remove intervals and fast finishes. / ${session.distance_km} 公里轻松跑；取消间歇与快速收尾。`];
     }
+    session.load_class = "easy";
+    session.intensity = `${program.intensity_anchors.easy.rpe} · ${program.intensity_anchors.easy.talk_test}`;
+    session.training_goal = "Maintain consistency while reducing stress until readiness recovers. / 在状态恢复前降低压力，同时保持训练连续性。";
+    session.main = [`${session.distance_km} km easy; remove intervals, marathon-pace blocks, and fast finishes. / ${session.distance_km} 公里轻松跑；取消间歇、马拉松配速段与快速收尾。`];
+    session.completion_standard = "Conversational throughout, stable gait, and no worsening symptoms; stop if the condition deteriorates. / 全程可对话、步态稳定且症状不加重；情况恶化时停止。";
+    session.recovery_and_fuelling = "Restore sleep and normal energy intake; do not compensate later for the removed work. / 恢复睡眠与正常能量摄入；之后不补做被取消的训练。";
     session.strength = [];
+    session.strength_duration_minutes = 0;
+    session.source_ids = [...new Set([...session.source_ids, "recovery-consensus-2018", "athlete-sleep-consensus-2021"])];
   }
   adapted.weekly_training_km = roundHalf(adapted.sessions
     .filter((session) => session.counts_toward_training_volume)
     .reduce((sum, session) => sum + session.distance_km, 0));
+  adapted.long_run_km = adapted.sessions.find((session) => session.type === "long_run")?.distance_km ?? 0;
   return adapted;
 }

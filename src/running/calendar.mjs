@@ -80,7 +80,7 @@ export function calendarEventsForWeek(week, { calendarName = "Marathon Training"
   return week.sessions.map((session) => {
     const startTime = session.type === "rest" ? program.calendar.rest_start_time : program.calendar.default_start_time;
     const durationMinutes = Math.max(15, Math.round(session.duration_minutes ?? 30));
-    const marker = `awesome-sports-ai-marathon:${session.date}:${session.role}`;
+    const marker = `awesome-sports-ai-marathon:${session.date}`;
     const titleDistance = session.distance_km > 0 ? ` · ${session.distance_km} km` : "";
     const description = [
       marker,
@@ -95,7 +95,7 @@ export function calendarEventsForWeek(week, { calendarName = "Marathon Training"
       listLines("Strength / 力量", session.strength),
       `Source anchors / 来源: ${session.source_ids.join(", ")}`
     ].filter(Boolean).join("\n");
-    const identity = `${calendarName}|${week.week}|${session.date}|${session.role}`;
+    const identity = marker;
     return {
       uid: `marathon-${stableHash(identity)}@awesome-sports-ai`,
       marker,
@@ -145,7 +145,7 @@ export function buildCalendarInstallPayload(week, { calendarName = "Marathon Tra
   };
 }
 
-const macOSInstallScript = `
+export const macOSInstallScript = `
 function run(argv) {
   const calendarName = argv[0];
   const payload = JSON.parse(argv[1]);

@@ -32,6 +32,25 @@ test("running evidence registry is auditable and decision-oriented", () => {
   }
 });
 
+test("every generated plan source anchor exists in the evidence registry", () => {
+  const registry = readJson("data", "running", "training-assets.json");
+  const knownIds = new Set(Object.values(registry.categories).flat().map((asset) => asset.id));
+  const profile = resolveRunnerProfile({
+    level: "advanced",
+    weeks: 16,
+    startDate: "2026-09-07",
+    currentWeeklyKm: 55,
+    longestRunKm: 24,
+    runDays: 5
+  });
+  const plan = buildMarathonPlan(profile);
+  const usedIds = new Set([
+    ...plan.weeks.flatMap((week) => week.sessions.flatMap((session) => session.source_ids)),
+    ...plan.race_strategy.source_ids
+  ]);
+  assert.deepEqual([...usedIds].filter((id) => !knownIds.has(id)), []);
+});
+
 test("running program contract exposes plan, readiness, and safety limits", () => {
   const program = readJson("data", "running", "training-program.json");
   const taxonomy = readJson("data", "running", "athlete-taxonomy.json");
@@ -62,6 +81,13 @@ test("parses race times and produces a labelled marathon estimate", () => {
   assert.equal(context.estimate_method, "Riegel 1.06 planning estimate");
   assert.equal(context.goal_assessment, "ambitious");
   assert.match(context.disclaimer, /not a guarantee/i);
+
+  const conservative = buildPerformanceContext({
+    recent_race: "half",
+    recent_time: "1:36:00",
+    goal_time: "3:35:00"
+  });
+  assert.equal(conservative.goal_assessment, "conservative");
 });
 
 test("normalizes an advanced runner without inventing missing availability", () => {
@@ -96,6 +122,30 @@ test("labels provisional defaults when the runner omits load history", () => {
   assert.equal(profile.current_weekly_km, 40);
   assert.ok(profile.assumptions.some((item) => item.includes("current weekly distance")));
   assert.ok(profile.assumptions.some((item) => item.includes("longest run")));
+});
+
+test("rejects a marathon plan when load history cannot support the selected frequency", () => {
+  assert.throws(() => resolveRunnerProfile({
+    level: "advanced",
+    startDate: "2026-09-07",
+    currentWeeklyKm: 15,
+    longestRunKm: 8,
+    runDays: 6
+  }), /at least 21 km/i);
+  assert.throws(() => resolveRunnerProfile({
+    level: "beginner",
+    startDate: "2026-09-07",
+    currentWeeklyKm: 20,
+    longestRunKm: 22,
+    runDays: 4
+  }), /cannot exceed current weekly/i);
+  assert.throws(() => resolveRunnerProfile({
+    level: "beginner",
+    startDate: "2026-09-07",
+    currentWeeklyKm: 20,
+    longestRunKm: 0,
+    runDays: 4
+  }), /longest run km/i);
 });
 
 test("classifies readiness into green, yellow, and red actions", () => {
@@ -180,12 +230,19 @@ test("adapts the selected week without rewriting the source plan", () => {
   const yellow = adaptWeekForReadiness(sourceWeek, assessReadiness({ sleepHours: 5.5, soreness: 6 }));
   assert.ok(yellow.weekly_training_km < sourceWeek.weekly_training_km);
   assert.equal(yellow.sessions.some((session) => session.load_class === "hard"), false);
+  assert.ok(yellow.sessions
+    .filter((session) => session.distance_km > 0)
+    .every((session) => session.main[0].startsWith(`${session.distance_km} km easy`)));
+  assert.ok(yellow.sessions.every((session, index) => session.duration_minutes <= sourceWeek.sessions[index].duration_minutes));
+  assert.ok(yellow.sessions.every((session) => session.strength.length === 0));
   assert.deepEqual(plan.weeks[6], sourceWeek);
 
   const redRaceWeek = adaptWeekForReadiness(plan.weeks.at(-1), assessReadiness({ redFlag: true }));
   assert.equal(redRaceWeek.sessions.some((session) => session.type === "race"), false);
   assert.equal(redRaceWeek.weekly_training_km, 0);
+  assert.equal(redRaceWeek.long_run_km, 0);
   assert.ok(redRaceWeek.sessions.every((session) => session.type === "rest"));
+  assert.ok(redRaceWeek.sessions.every((session) => session.duration_minutes <= 20));
 });
 
 test("does not prescribe running after a midweek marathon", () => {

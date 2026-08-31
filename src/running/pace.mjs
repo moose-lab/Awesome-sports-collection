@@ -75,7 +75,9 @@ export function buildPerformanceContext(input = {}) {
   let goalGapPercent;
   if (goalSeconds && estimatedMarathonSeconds) {
     goalGapPercent = ((estimatedMarathonSeconds - goalSeconds) / estimatedMarathonSeconds) * 100;
-    if (goalGapPercent <= 2) {
+    if (goalGapPercent < -2) {
+      goalAssessment = "conservative";
+    } else if (goalGapPercent <= 2) {
       goalAssessment = "aligned";
     } else if (goalGapPercent <= 6) {
       goalAssessment = "ambitious";

@@ -8,9 +8,11 @@ import { fileURLToPath } from "node:url";
 import { renderAssetSummaryLines } from "../src/running/assets.mjs";
 import {
   buildCalendarInstallPayload,
+  calendarEventsForWeek,
   escapeICalText,
   foldICalLine,
   installWeekToMacCalendar,
+  macOSInstallScript,
   renderWeekIcs
 } from "../src/running/calendar.mjs";
 import { buildMarathonPlan } from "../src/running/planner.mjs";
@@ -100,6 +102,25 @@ test("builds a deterministic duplicate-aware macOS Calendar install payload", ()
   assert.equal(calls[0].command, "osascript");
   assert.ok(calls[0].args.includes("Marathon Training"));
   assert.throws(() => installWeekToMacCalendar(week, "Marathon Training", { platform: "linux" }), /macOS/i);
+
+  const revised = structuredClone(week);
+  revised.sessions[0].role = "easy";
+  revised.sessions[0].title = "Revised session / 调整课";
+  const originalEvent = calendarEventsForWeek(week)[0];
+  const revisedEvent = calendarEventsForWeek(revised)[0];
+  assert.equal(revisedEvent.uid, originalEvent.uid);
+  assert.equal(revisedEvent.marker, originalEvent.marker);
+});
+
+test("compiles the macOS Calendar automation without executing it", { skip: process.platform !== "darwin" }, () => {
+  const directory = mkdtempSync(join(tmpdir(), "marathon-calendar-compile-"));
+  const outputPath = join(directory, "installer.scpt");
+  try {
+    execFileSync("osacompile", ["-l", "JavaScript", "-e", macOSInstallScript, "-o", outputPath]);
+    assert.ok(readFileSync(outputPath).length > 0);
+  } finally {
+    rmSync(directory, { recursive: true, force: true });
+  }
 });
 
 test("renders a detailed bilingual selected week and race strategy", () => {
