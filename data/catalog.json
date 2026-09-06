@@ -512,6 +512,16 @@
       "openness": "open-source"
     },
     {
+      "id": "parlayapi-python-sdk",
+      "title": "ParlayAPI Python SDK",
+      "url": "https://github.com/JacobiusMakes/parlay-api-python",
+      "description": "Provides a Python client for ingesting sportsbook odds into private research workflows with your own API key.",
+      "categoryId": "developer-libraries-sdks",
+      "sportTags": ["Multi-sport"],
+      "aiCapabilities": ["data-ingestion"],
+      "openness": "open-source"
+    },
+    {
       "id": "sportsdataverse-py",
       "title": "sportsdataverse-py",
       "url": "https://github.com/sportsdataverse/sportsdataverse-py",

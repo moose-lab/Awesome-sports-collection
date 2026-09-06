@@ -124,6 +124,7 @@ Open-source projects, open datasets, open APIs, reproducible research, and free 
 - **[Kloppy](https://github.com/PySport/kloppy)** - Standardizes soccer tracking and event data into vendor-independent Python objects. *(Sports: Soccer; AI: data-ingestion, tracking)*
 - **[mplsoccer](https://github.com/andrewRowlinson/mplsoccer)** - Draws soccer pitches and common football analytics plots with Matplotlib. *(Sports: Soccer; AI: analytics-modeling, media-generation)*
 - **[OpenCV](https://github.com/opencv/opencv)** - Provides open-source computer vision infrastructure for tracking, detection, and video analysis. *(Sports: Multi-sport; AI: computer-vision, tracking)*
+- **[ParlayAPI Python SDK](https://github.com/JacobiusMakes/parlay-api-python)** - Provides a Python client for ingesting sportsbook odds into private research workflows with your own API key. *(Sports: Multi-sport; AI: data-ingestion)*
 - **[socceraction](https://github.com/ML-KULeuven/socceraction)** - Converts soccer event streams to SPADL and values actions with VAEP or xT. *(Sports: Soccer; AI: data-ingestion, analytics-modeling)*
 - **[soccerplots](https://github.com/slothfulwave/soccerplots)** - Creates radar and pizza charts for football player analysis. *(Sports: Soccer; AI: analytics-modeling, media-generation)*
 - **[sportsdataverse-py](https://github.com/sportsdataverse/sportsdataverse-py)** - Provides a Python package for loading and tidying data from several SportsDataverse ecosystems. *(Sports: Multi-sport; AI: data-ingestion, analytics-modeling)*
